@@ -90,7 +90,7 @@ CODE
   
   ## Exercise: Add a grammar rule to handle the `!` unary operators
   # Remove the x in front of the method name to run.
-  def xtest_unary_operator
+  def test_unary_operator
     assert_equal Nodes.new([
       CallNode.new(NumberNode.new(2), "!", [])
     ]), Parser.new.parse("!2")
