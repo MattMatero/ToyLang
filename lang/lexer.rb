@@ -33,7 +33,7 @@ class Lexer
         i += string.size + 2 #extra 2 spaces for ending " 
       elsif indent = token[/\A\:\n( +)/m,1] #looks for : followed by a newline and spaces (python indentation)
         if indent.size <= indent_level
-          raise 'Bad indent level. Got #{index.size} indents, expected > #{indent_level}'
+          raise "Bad indent level. Got #{index.size} indents, expected > #{indent_level}"
         end
         
         indent_level = indent.size
