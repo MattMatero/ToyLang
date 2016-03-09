@@ -1,5 +1,5 @@
 require_relative "./test_helper"
-require_relative "../lang/lexer"
+require_relative "../lang/lexical parser/lexer"
 
 class LexerTest < Test::Unit::TestCase
   def test_number
