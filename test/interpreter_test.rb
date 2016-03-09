@@ -1,5 +1,6 @@
+require 'require_all'
 require "test_helper"
-require "interpreter"
+require_rel "../lang/Interpreter"
 
 class InterpreterTest < Test::Unit::TestCase
   def test_number
