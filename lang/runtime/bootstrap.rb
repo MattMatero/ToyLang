@@ -24,6 +24,6 @@ Constants["Class"].def :new do |receiver, args|
 end
 
 Constants["Object"].def :print do |receiver, args|
-	puts arguments.first.ruby_Value
+	puts args.first.ruby_Value
 	Constants["nil"] #returns obj from our runtime 
 end
