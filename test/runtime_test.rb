@@ -30,4 +30,60 @@ class RuntimeTest < Test::Unit::TestCase
   def test_a_class_is_a_class
     assert_equal Constants["Class"], Constants["Number"].runtime_class
   end
+
+  def test_lookup_in_super_class
+    num_object = Constants["Number"]
+    assert_not_nil num_object.lookup("hash_code")
+  end
+
+  def test_hash_code_inheritence
+    num_object = Constants["Number"].call("new") #make new number object
+    runtime = num_object.runtime_class
+    
+    assert_equal runtime, num_object.call("hash_code").runtime_class
+  end
+
+  def test_addition_function_result
+    num = Constants["Number"].new_with_value(3)
+    args = Array.new
+    args.push Constants["Number"].new_with_value(7)
+    
+    result = num.call("+",args)
+
+    assert_equal num.runtime_class, result.runtime_class
+    assert_equal 10, result.ruby_value
+  end
+
+  def test_subtraction_function_result
+    num = Constants["Number"].new_with_value(3)
+    args = Array.new
+    args.push Constants["Number"].new_with_value(7)
+    
+    result = num.call("-",args)
+
+    assert_equal num.runtime_class, result.runtime_class
+    assert_equal -4, result.ruby_value
+  end
+
+  def test_mult_function_result
+    num = Constants["Number"].new_with_value(3)
+    args = Array.new
+    args.push Constants["Number"].new_with_value(7)
+    
+    result = num.call("*",args)
+
+    assert_equal num.runtime_class, result.runtime_class
+    assert_equal 21,result.ruby_value
+  end
+
+  def test_division_function_result
+    num = Constants["Number"].new_with_value(3)
+    args = Array.new
+    args.push Constants["Number"].new_with_value(7)
+    
+    result = num.call("/",args)
+
+    assert_equal num.runtime_class, result.runtime_class
+    assert_equal 0, result.ruby_value
+  end
 end

@@ -2,14 +2,22 @@ class ClassTemplate < ObjectTemplate
 	
 	attr_reader :runtime_methods
 
-	def initialize
+	def initialize(superclass = nil)
 		@runtime_methods = {}
 		@runtime_class = Constants['Class']
+    @runtime_superclass = superclass
 	end
 
 	def lookup(method_name)
 		method = @runtime_methods[method_name]
-		raise "Method not found: #{method_name}" if method.nil?
+		
+    unless method
+      if @runtime_superclass
+        return @runtime_superclass.lookup(method_name)
+      else
+        raise "Method not found: #{method_name}" if method.nil? 
+      end
+    end
 		method
 	end
 
