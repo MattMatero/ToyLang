@@ -1,5 +1,6 @@
+require 'require_all'
 require "test_helper"
-require "runtime"
+require_rel "../lang/runtime"
 
 class RuntimeTest < Test::Unit::TestCase
   def test_get_constant
