@@ -1,1 +1,1 @@
-This is a toy language used for the purpose of learning how to write a compiler. 
+This is a toy language used for the purpose of learning
